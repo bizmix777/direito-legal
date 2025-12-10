@@ -34,7 +34,7 @@ export function Footer() {
                   className="flex items-center gap-3 text-background/70 hover:text-secondary transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  (62) 99999-9999
+                  (62) 99247-5080
                 </a>
               </li>
               <li>
