@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { 
   Search, 
   MapPin, 
@@ -7,7 +8,8 @@ import {
   Scale, 
   Users,
   ChevronDown,
-  MessageCircle
+  MessageCircle,
+  ArrowRight
 } from "lucide-react";
 
 const services = [
@@ -166,13 +168,24 @@ export function Services() {
                       </ul>
                     </div>
                     
-                    <button
-                      onClick={() => handleWhatsApp(service.title)}
-                      className="w-full flex items-center justify-center gap-2 bg-secondary text-secondary-foreground py-3 rounded-lg font-medium hover:bg-secondary/90 transition-colors"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Solicitar Orçamento
-                    </button>
+                    <div className="flex gap-2">
+                      {service.id === 1 && (
+                        <Link
+                          to="/analise-risco"
+                          className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                        >
+                          Saiba Mais
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      )}
+                      <button
+                        onClick={() => handleWhatsApp(service.title)}
+                        className={`${service.id === 1 ? 'flex-1' : 'w-full'} flex items-center justify-center gap-2 bg-secondary text-secondary-foreground py-3 rounded-lg font-medium hover:bg-secondary/90 transition-colors`}
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        Orçamento
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
