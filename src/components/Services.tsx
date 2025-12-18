@@ -1,25 +1,30 @@
-import { CheckCircle2, FileText, Search, Home } from "lucide-react";
+import { CheckCircle2, FileText, Search, Home, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
     icon: <Search className="w-8 h-8 text-primary" />,
     title: "Análise de Risco (Due Diligence)",
     description: "Investigação completa de dívidas, processos e pendências do imóvel e dos vendedores. Segurança zero surpresas.",
+    link: "/analise-risco" // <--- O PULO DO GATO ESTÁ AQUI
   },
   {
     icon: <Home className="w-8 h-8 text-secondary" />,
     title: "Regularização de Imóveis",
     description: "Usucapião, inventários, desmembramentos e retificações de área. Transformamos posse em propriedade registrada.",
+    link: null
   },
   {
     icon: <FileText className="w-8 h-8 text-primary" />,
     title: "Contratos Blindados",
     description: "Elaboração e revisão de contratos de compra e venda, locação e permuta com cláusulas de proteção avançada.",
+    link: null
   },
   {
     icon: <CheckCircle2 className="w-8 h-8 text-secondary" />,
     title: "Assessoria em Leilões",
     description: "Análise jurídica prévia de editais e imóveis de leilão para garantir a arrematação segura e lucrativa.",
+    link: null
   }
 ];
 
@@ -38,16 +43,27 @@ export function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300 group">
+            <div key={index} className="flex flex-col h-full p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300 group relative">
               <div className="mb-4 p-3 bg-white rounded-lg w-fit shadow-sm group-hover:scale-110 transition-transform">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3 font-display">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
                 {service.description}
               </p>
+              
+              {/* Se tiver link, mostra o botão */}
+              {service.link && (
+                <Link 
+                  to={service.link}
+                  className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all mt-auto"
+                >
+                  Ver Detalhes da Análise
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           ))}
         </div>
