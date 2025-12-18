@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { ArrowLeft, FileSignature, ShieldAlert, PenTool, Lock, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ContactModal } from "@/components/ContactModal";
 
 export default function Contratos() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="bg-white border-b border-border sticky top-0 z-50">
@@ -28,10 +32,13 @@ export default function Contratos() {
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
             Não use modelos de internet. Criamos contratos personalizados que preveem cenários de crise, inadimplência e distrato, protegendo você de verdade.
           </p>
-          <a href="https://wa.me/5562992475080?text=Olá Henrique, preciso elaborar/revisar um contrato." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+          >
             <PenTool className="w-5 h-5" />
             Solicitar Contrato Blindado
-          </a>
+          </button>
         </div>
       </section>
 
@@ -56,6 +63,12 @@ export default function Contratos() {
           </div>
         </div>
       </section>
+
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        serviceName="Contratos Blindados" 
+      />
     </div>
   );
 }
