@@ -32,6 +32,8 @@ export default function Leiloes() {
           <p className="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10 leading-relaxed">
             Leilão não é sorte, é matemática e direito. Analisamos o processo para garantir que você não compre um problema, mas sim uma oportunidade de lucro.
           </p>
+          
+          {/* BOTÃO CORRIGIDO: Agora abre o Modal */}
           <button 
             onClick={() => setIsModalOpen(true)}
             className="inline-flex items-center gap-2 bg-emerald-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-emerald-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
