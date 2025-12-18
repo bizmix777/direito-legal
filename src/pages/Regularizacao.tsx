@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { ArrowLeft, Home, FileWarning, CheckCircle2, Map, FileText, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ContactModal } from "@/components/ContactModal";
 
 export default function Regularizacao() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="bg-white border-b border-border sticky top-0 z-50">
@@ -28,10 +32,13 @@ export default function Regularizacao() {
           <p className="text-lg md:text-xl text-blue-50 max-w-2xl mx-auto mb-10 leading-relaxed">
             Contrato de gaveta não garante propriedade. Transformamos sua posse em Escritura e Matrícula registrada, valorizando seu patrimônio em até 40%.
           </p>
-          <a href="https://wa.me/5562992475080?text=Olá Henrique, preciso regularizar um imóvel." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-secondary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-white text-secondary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+          >
             <CheckCircle2 className="w-5 h-5" />
             Quero Regularizar Meu Imóvel
-          </a>
+          </button>
         </div>
       </section>
 
@@ -71,6 +78,12 @@ export default function Regularizacao() {
           </div>
         </div>
       </section>
+
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        serviceName="Regularização de Imóveis" 
+      />
     </div>
   );
 }
