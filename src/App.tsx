@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Footer } from "@/components/Footer";
@@ -17,15 +17,13 @@ function HomePage() {
 }
 
 function App() {
-  // AQUI ESTÁ A MÁGICA: basename="/direito-legal"
-  // Isso diz pro React: "Ignore a parte /direito-legal da URL"
   return (
-    <BrowserRouter basename={import.meta.env.MODE === 'production' ? '/direito-legal' : '/'}>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/analise-risco" element={<AnaliseRisco />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
