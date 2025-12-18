@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: '/direito-legal/', // Caminho fixo, sem ponto!
+  # base: '/direito-legal/', // Caminho fixo, sem ponto! #
   server: {
     host: "::",
     port: 8080,
