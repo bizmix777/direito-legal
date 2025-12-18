@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // AQUI É O LUGAR CERTO:
-  base: mode === 'production' ? '/direito-legal/' : '/',
+  // AQUI ESTÁ A MUDANÇA:
+  base: './',
 
   server: {
     host: "::",
